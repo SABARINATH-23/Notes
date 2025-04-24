@@ -8,23 +8,21 @@
 {
     height: 100vh;
     display: flex;
-   
-
 }
 .left > .Navbar
 {
-    width: 22vw;
+    width: calc(100vw - 70vw);
     background-color:#B3E5FC;
-    display:flex ;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
+    display:grid ;
+    grid-column: auto;
+    grid-template-rows: auto 550px auto;
+   
 }
 .top_nav
 {
     padding: 10px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     height: 80px;
     background-color:#263238;
     font-size: 20px;

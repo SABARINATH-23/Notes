@@ -56,12 +56,10 @@
     cursor: pointer;
 
 }
-#id
-{
-    flex-grow: 10;
-}
+
 .list_items
 {
-   color: red;
-  
+    color: white;
+    background-color: red;
+    margin-left: 20px;
 }
