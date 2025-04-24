@@ -56,10 +56,20 @@
     cursor: pointer;
 
 }
-
-.list_items
+#list
 {
-    color: white;
-    background-color: red;
-    margin-left: 20px;
+    height: 100px;
+    border-radius:10px ;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 20px;
+    background-color:white;
+
+    /* background-color: white; */
 }
+
+#list p {
+    color: black; 
+  }
+
