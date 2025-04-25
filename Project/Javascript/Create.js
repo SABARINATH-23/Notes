@@ -34,5 +34,7 @@ create_note.addEventListener("click", () => {
 });
 list.addEventListener("click", () => {
   all.classList.add("update_1");
+  console.log(content_1)
+  all.append(content_1)
   content_1.classList.add("update_2");
 });
