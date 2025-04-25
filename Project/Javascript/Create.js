@@ -25,6 +25,8 @@ create.addEventListener("click", () => {
   if (Object.length >= 1) {
     content_1.remove();
   }
+  title.value = "";
+  content.value = "";
 });
 
 create_note.addEventListener("click", () => {
