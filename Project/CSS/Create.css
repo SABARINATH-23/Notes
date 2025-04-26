@@ -86,24 +86,30 @@
     height: 90vh;
     padding: 10px;
     border-radius: 20px;
-    background-color:white;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: 80px;
-    justify-content: space-between;
-    
+    background-color:white;    
+    position:static;
 }
 .update_2 > h2
 {
     height: 10px;
     margin-left: 10px;
+    margin-bottom: 20px;
     font-size: 22px;
     margin-top: 30px;
+    font-weight: bold;
+    display: inline-block;
+   
 }
 .update_2 > p
 {
+    margin-top: 30px;
     width: 100%;
+    padding-top: 20px;
+    font-size: 20px;
+    text-indent: 12px;
+    font-weight: bold;
     border-top: 2px solid black;
+    
 }
 
 .update_2 > button{
@@ -115,19 +121,69 @@
     border-radius: 10px;
     font-size: 20px;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 
-.update_2 > button:nth-last-child(2)
-{
-    background-color:orangered;
-    color: white;
-}
 .update_2 > button:nth-last-child(3)
 {
-    position: relative;
-    left: 350px;
-    margin-left: 30px;
-    background-color: green;
+    float: right;
+    background-color: orangered;
     color: white;
+    
 
 }
+.update_2 > button:nth-last-child(2)
+{
+    background-color:green;
+    color: white;
+    float: right;
+    clear: left;
+}
+
+.insert{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 50%;
+}
+
+
+.insert_1
+{
+  height: 150px;
+  width: 400px;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+}
+.insert_1 > input
+{
+   border-style: none;
+   border-bottom:2px solid black ;
+   outline: none;
+   width: 100%;
+   font-size: 20px;
+}
+.insert_1 > button
+{
+    margin-top: 10px;
+    padding: 15px;
+    width: 40%;
+    border-radius: 20px;
+    border-style: none;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid black;
+    background-color: white;
+    cursor: pointer;
+}
+.insert_1 > button:hover
+{
+    background-color: black;
+    color: white;
+}
+

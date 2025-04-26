@@ -6,7 +6,11 @@ let all = document.getElementById("all");
 let content_1 = document.getElementById("content_1");
 let create_note = document.getElementById("create_Note");
 let d2 = document.createElement("div");
-let add = document.getElementById("addtask");
+let insert  = document.createElement("div");
+let insert_in = document.createElement("div")
+let t2 = document.createElement("div")
+
+
 
 let id = 0;
 
@@ -54,16 +58,42 @@ list.addEventListener("click", (e) => {
     let d2 = document.createElement("div");
     d2.innerHTML = `
       <h2>${note.title_value}</h2>
-      <button>Add Task</button>
-      <button>Delete Note</button>
-      <p>${note.content_value}</p>
+      <button id="remove">Delete Note</button>
+      <button id = "add">Add Task</button>
+      <p id="note_content">${note.content_value}</p>
     `;
-
     all.innerHTML = "";
     d2.classList.add("update_2");
     all.appendChild(d2);
+    let add = document.getElementById("add");
+ add.addEventListener('click',()=>{
+     
+      insert_in.innerHTML = `
+      <input type="text" placeholder = "Enter Task" id="task_list"/>
+      <button id="note_content_1">Add Task</button>
+      `
+      d2.append(insert);
+      insert.classList.add("insert")
+      insert_in.classList.add("insert_1")
+      insert.append(insert_in)
+      let tl = document.getElementById("task_list");
+    
+      let note_content_1 = document.getElementById("note_content_1");
+      
+      note_content_1.addEventListener('click',()=>{
+        let list_value = document.getElementById("list_value");
+        t2.innerHTML = `
+        <p>Task List</p>
+        <ol>
+          <li id="list_value">${tl.value}</li>
+        </ol>
+      `
+       
+       console.log(list_value)
+      })
+      
+    })
+
   }
 });
-add.addEventListener("click", () => {
-  console.log("added");
-});
+
