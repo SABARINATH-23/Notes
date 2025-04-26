@@ -76,16 +76,58 @@
   }
 
 
-
+#list > .update_2
+{   
+    display: flex;
+}
 .update_2
 {
-    width: 70vw;
-    height: 85vh;
+    width: 75vw;
+    height: 90vh;
     padding: 10px;
     border-radius: 20px;
     background-color:white;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 80px;
+    justify-content: space-between;
+    
 }
-.update_2 >p
+.update_2 > h2
 {
-    margin-top: 10px;
+    height: 10px;
+    margin-left: 10px;
+    font-size: 22px;
+    margin-top: 30px;
+}
+.update_2 > p
+{
+    width: 100%;
+    border-top: 2px solid black;
+}
+
+.update_2 > button{
+    left: 10px;
+    margin-top: 20px;
+    height: 50px;
+    width: 120px;
+    border-style: none;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.update_2 > button:nth-last-child(2)
+{
+    background-color:orangered;
+    color: white;
+}
+.update_2 > button:nth-last-child(3)
+{
+    position: relative;
+    left: 350px;
+    margin-left: 30px;
+    background-color: green;
+    color: white;
+
 }
