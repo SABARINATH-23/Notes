@@ -6,11 +6,9 @@ let all = document.getElementById("all");
 let content_1 = document.getElementById("content_1");
 let create_note = document.getElementById("create_Note");
 let d2 = document.createElement("div");
-let insert  = document.createElement("div");
-let insert_in = document.createElement("div")
-let t2 = document.createElement("div")
-
-
+let insert = document.createElement("div");
+let insert_in = document.createElement("div");
+let t2 = document.createElement("div");
 
 let id = 0;
 
@@ -58,42 +56,48 @@ list.addEventListener("click", (e) => {
     let d2 = document.createElement("div");
     d2.innerHTML = `
       <h2>${note.title_value}</h2>
-      <button id="remove">Delete Note</button>
-      <button id = "add">Add Task</button>
+       <button id ="remove" >Delete Note</button>
+      <button id="add">Add Task</button>
       <p id="note_content">${note.content_value}</p>
     `;
     all.innerHTML = "";
     d2.classList.add("update_2");
     all.appendChild(d2);
+
     let add = document.getElementById("add");
- add.addEventListener('click',()=>{
-     
+    add.addEventListener("click", () => {
       insert_in.innerHTML = `
       <input type="text" placeholder = "Enter Task" id="task_list"/>
       <button id="note_content_1">Add Task</button>
-      `
+      `;
       d2.append(insert);
-      insert.classList.add("insert")
-      insert_in.classList.add("insert_1")
-      insert.append(insert_in)
-      let tl = document.getElementById("task_list");
-    
-      let note_content_1 = document.getElementById("note_content_1");
-      
-      note_content_1.addEventListener('click',()=>{
-        let list_value = document.getElementById("list_value");
-        t2.innerHTML = `
-        <p>Task List</p>
-        <ol>
-          <li id="list_value">${tl.value}</li>
-        </ol>
-      `
-       
-       console.log(list_value)
-      })
-      
-    })
+      insert.classList.add("insert");
+      insert_in.classList.add("insert_1");
+      insert.append(insert_in);
 
+      let note_content_1 = document.getElementById("note_content_1");
+      let t2 = document.createElement("div");
+      t2.innerHTML = `
+      <h3>Task List</h3>
+      <ul type="circle" id="unoredList">
+      </ul>
+      `;
+      note_content_1.addEventListener("click", () => {
+        let tl = document.getElementById("task_list");
+        let note_content = document.getElementById("note_content");
+
+        note_content.append(t2);
+        let unoredList = document.getElementById("unoredList");
+        let li = document.createElement("li");
+        li.innerText = tl.value;
+        unoredList.appendChild(li);
+      });
+    });
+    let remove = document.getElementById("remove");
+    remove.addEventListener("click", () => {
+      let noteId = clickedDiv.dataset.noteId;
+      let noteIndex = arr.find((item) => item.id == noteId);
+      arr.splice(noteIndex, 1);
+    });
   }
 });
-
