@@ -13,7 +13,7 @@ let t2 = document.createElement("div");
 let id = 0;
 
 let arr = [];
-create.addEventListener("click", () => {
+let a = create.addEventListener("click", () => {
   obj = {
     id: id,
     title_value: title.value,
@@ -45,9 +45,25 @@ create_note.addEventListener("click", () => {
   all.appendChild(content_1);
 });
 
+function renderNotes() {
+  list.innerHTML = "";
+  arr.forEach((obj) => {
+    let di = document.createElement("div");
+    di.id = `ref-${obj.id}`;
+    di.dataset.noteId = obj.id;
+    // di.classList.add("list_1");
+
+    // let d = document.createElement("p");
+    // let d1 = document.createElement("p");
+    // d.textContent = `${obj.title_value}`;
+    // d1.textContent = `${obj.content_value}`;
+    list.append(di);
+    d2.remove();
+  });
+}
+
 list.addEventListener("click", (e) => {
   let clickedDiv = e.target.closest("div.list_1");
-  console.log(clickedDiv);
 
   if (clickedDiv) {
     let noteId = clickedDiv.dataset.noteId;
@@ -97,7 +113,9 @@ list.addEventListener("click", (e) => {
     remove.addEventListener("click", () => {
       let noteId = clickedDiv.dataset.noteId;
       let noteIndex = arr.find((item) => item.id == noteId);
-      arr.splice(noteIndex, 1);
+      let i = noteIndex.id;
+      arr.splice(i, 1);
+      renderNotes();
     });
   }
 });
