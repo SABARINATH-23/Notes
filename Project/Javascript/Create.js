@@ -59,6 +59,7 @@ function renderNotes() {
     // d1.textContent = `${obj.content_value}`;
     list.append(di);
     d2.remove();
+    div.list.remove();
   });
 }
 
@@ -72,8 +73,8 @@ list.addEventListener("click", (e) => {
     let d2 = document.createElement("div");
     d2.innerHTML = `
       <h2>${note.title_value}</h2>
-       <button id ="remove" >Delete Note</button>
-      <button id="add">Add Task</button>
+       <button id ="add" >Add Task</button>
+      <button id="remove">Delete Note</button>
       <p id="note_content">${note.content_value}</p>
     `;
     all.innerHTML = "";
@@ -106,13 +107,14 @@ list.addEventListener("click", (e) => {
         let unoredList = document.getElementById("unoredList");
         let li = document.createElement("li");
         li.innerText = tl.value;
+        li.classList.add("list")
         unoredList.appendChild(li);
       });
     });
     let remove = document.getElementById("remove");
     remove.addEventListener("click", () => {
       let noteId = clickedDiv.dataset.noteId;
-      let noteIndex = arr.find((item) => item.id == noteId);
+      let noteIndex = arr.findIndex((item) => item.id == noteId);
       let i = noteIndex.id;
       arr.splice(i, 1);
       renderNotes();

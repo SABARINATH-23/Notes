@@ -93,7 +93,6 @@
 {
     height: 10px;
     margin-left: 10px;
-    margin-bottom: 20px;
     font-size: 22px;
     margin-top: 30px;
     font-weight: bold;
@@ -102,19 +101,18 @@
 }
 .update_2 > p
 {
-    margin-top: 30px;
     width: 100%;
     padding-top: 20px;
+    padding-bottom: 20px;
     font-size: 20px;
     text-indent: 12px;
     font-weight: bold;
     border-top: 2px solid black;
-    
+       
 }
 
 .update_2 > button{
     left: 10px;
-    margin-top: 20px;
     height: 50px;
     width: 120px;
     border-style: none;
@@ -122,22 +120,23 @@
     font-size: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
-.update_2 > button:nth-last-child(3)
+.update_2 > #add
 {
-    float: right;
-    background-color: orangered;
+    margin-left: 700px; 
+    background-color: green;
     color: white;
     
 
 }
-.update_2 > button:nth-last-child(2)
+.update_2 > #remove
 {
-    background-color:green;
+   
+    background-color:orangered;
     color: white;
-    float: right;
-    clear: left;
+    width: 150px;
 }
 
 .insert{
@@ -185,5 +184,13 @@
 {
     background-color: black;
     color: white;
+}
+.list
+{
+    margin-left: 30px;
+    text-indent: -5px;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: lighter;
 }
 
