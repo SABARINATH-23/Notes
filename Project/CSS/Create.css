@@ -154,6 +154,7 @@
   border-radius: 10px;
   padding: 10px;
   display: flex;
+  
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -193,4 +194,6 @@
     font-size: 20px;
     font-weight: lighter;
 }
-
+.task_list{
+    margin-top: 10px;
+}

@@ -11,7 +11,7 @@ let insert_in = document.createElement("div");
 let t2 = document.createElement("div");
 
 let id = 0;
-
+let list_li = true;
 let arr = [];
 let a = create.addEventListener("click", () => {
   obj = {
@@ -84,9 +84,10 @@ list.addEventListener("click", (e) => {
     let add = document.getElementById("add");
     add.addEventListener("click", () => {
       insert_in.innerHTML = `
-      <input type="text" placeholder = "Enter Task" id="task_list"/>
-      <button id="note_content_1">Add Task</button>
-      `;
+        <input type="text" placeholder = "Enter Task" id="task_list"/>
+        <button id="note_content_1">Add Task</button>
+        `;
+
       d2.append(insert);
       insert.classList.add("insert");
       insert_in.classList.add("insert_1");
@@ -94,29 +95,31 @@ list.addEventListener("click", (e) => {
 
       let note_content_1 = document.getElementById("note_content_1");
       let t2 = document.createElement("div");
+
       t2.innerHTML = `
       <h3>Task List</h3>
       <ul type="circle" id="unoredList">
       </ul>
       `;
+      t2.classList.add("task_list");
+
       note_content_1.addEventListener("click", () => {
         let tl = document.getElementById("task_list");
         let note_content = document.getElementById("note_content");
-
         note_content.append(t2);
         let unoredList = document.getElementById("unoredList");
         let li = document.createElement("li");
         li.innerText = tl.value;
-        li.classList.add("list")
+        li.classList.add("list");
         unoredList.appendChild(li);
+        insert_in.remove();
       });
     });
     let remove = document.getElementById("remove");
     remove.addEventListener("click", () => {
       let noteId = clickedDiv.dataset.noteId;
       let noteIndex = arr.findIndex((item) => item.id == noteId);
-      let i = noteIndex.id;
-      arr.splice(i, 1);
+      arr.splice(noteIndex, 1);
       renderNotes();
     });
   }
