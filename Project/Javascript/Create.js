@@ -22,7 +22,7 @@ create.addEventListener("click", () => {
   title.value = "";
   content.value = "";
 
-  if (arr.length === 1 && content_1.parentElement) {
+  if (arr.length  > 0 ) {
     content_1.remove();
   }
 
@@ -121,7 +121,6 @@ list.addEventListener("click", (e) => {
         li.innerText = tl.value;
         li.classList.add("list");
         unoredList.appendChild(li);
-
         insert.remove();
       });
     });
