@@ -5,128 +5,136 @@ let list = document.getElementById("list");
 let all = document.getElementById("all");
 let content_1 = document.getElementById("content_1");
 let create_note = document.getElementById("create_Note");
-let d2 = document.createElement("div");
-let insert = document.createElement("div");
-let insert_in = document.createElement("div");
-let t2 = document.createElement("div");
 
 let id = 0;
-let list_li = true;
 let arr = [];
+
+// Create note
 create.addEventListener("click", () => {
-  obj = {
+  let obj = {
     id: id,
     title_value: title.value,
     content_value: content.value,
   };
-  let di = document.createElement("div");
-  di.id = `ref-${id}`;
-  di.dataset.noteId = id;
-  list.append(di);
-  let d = document.createElement("p");
-  let d1 = document.createElement("p");
-  id++;
-  di.append(d, d1);
-  di.classList.add("list_1");
 
   arr.push(obj);
+  renderNotes();
+  title.value = "";
+  content.value = "";
 
-  d.textContent = `${obj.title_value}`;
-  d1.textContent = `${obj.content_value}`;
-
-  if (arr.length >= 1) {
+  if (arr.length === 1 && content_1.parentElement) {
     content_1.remove();
-    title.value = "";
-    content.value = "";
+  }
+
+  id++;
+});
+
+// Show note creation form
+create_note.addEventListener("click", () => {
+  if (!all.contains(content_1)) {
+    all.appendChild(content_1);
   }
 });
 
-create_note.addEventListener("click", () => {
-  all.appendChild(content_1);
-});
-
+// Render notes list
 function renderNotes() {
   list.innerHTML = "";
+
   arr.forEach((obj) => {
     let di = document.createElement("div");
     di.id = `ref-${obj.id}`;
     di.dataset.noteId = obj.id;
-    // di.classList.add("list_1");
+    di.classList.add("list_1");
 
-    // let d = document.createElement("p");
-    // let d1 = document.createElement("p");
-    // d.textContent = `${obj.title_value}`;
-    // d1.textContent = `${obj.content_value}`;
-    list.append(di);
+    let d = document.createElement("p");
+    let d1 = document.createElement("p");
 
-    d2.remove();
-    div.list.remove();
+    d.textContent = obj.title_value;
+    d1.textContent = obj.content_value;
+
+    di.append(d, d1);
+    list.appendChild(di);
   });
 
-  if (arr.length == 0);
-  {
+  if (arr.length === 0) {
     open("./Home.html", "_self");
   }
 }
 
+// Handle note selection
 list.addEventListener("click", (e) => {
   let clickedDiv = e.target.closest("div.list_1");
 
   if (clickedDiv) {
-    let noteId = clickedDiv.dataset.noteId;
-    let note = arr.find((item) => item.id == noteId);
+    let noteId = parseInt(clickedDiv.dataset.noteId);
+    let note = arr.find((item) => item.id === noteId);
+
+    if (!note) return;
 
     let d2 = document.createElement("div");
     d2.innerHTML = `
       <h2>${note.title_value}</h2>
-       <button id ="add" >Add Task</button>
+      <button id="add">Add Task</button>
       <button id="remove">Delete Note</button>
       <p id="note_content">${note.content_value}</p>
     `;
-    all.innerHTML = "";
     d2.classList.add("update_2");
+
+    all.innerHTML = "";
     all.appendChild(d2);
 
-    let add = document.getElementById("add");
+    // Add task button
+    let add = d2.querySelector("#add");
     add.addEventListener("click", () => {
-      insert_in.innerHTML = `
-        <input type="text" placeholder = "Enter Task" id="task_list"/>
-        <button id="note_content_1">Add Task</button>
-        `;
-
-      d2.append(insert);
+      let insert = document.createElement("div");
       insert.classList.add("insert");
+
+      let insert_in = document.createElement("div");
       insert_in.classList.add("insert_1");
-      insert.append(insert_in);
 
-      let note_content_1 = document.getElementById("note_content_1");
-      let t2 = document.createElement("div");
-
-      t2.innerHTML = `
-      <h3>Task List</h3>
-      <ul type="circle" id="unoredList">
-      </ul>
+      insert_in.innerHTML = `
+        <input type="text" placeholder="Enter Task" id="task_list"/>
+        <button id="note_content_1">Add Task</button>
       `;
-      t2.classList.add("task_list");
+      insert.appendChild(insert_in);
+      d2.appendChild(insert);
+
+      let note_content_1 = insert_in.querySelector("#note_content_1");
 
       note_content_1.addEventListener("click", () => {
-        let tl = document.getElementById("task_list");
-        let note_content = document.getElementById("note_content");
-        note_content.append(t2);
-        let unoredList = document.getElementById("unoredList");
+        let tl = insert_in.querySelector("#task_list");
+        let note_content = d2.querySelector("#note_content");
+
+        let taskList = d2.querySelector(".task_list");
+        if (!taskList) {
+          taskList = document.createElement("div");
+          taskList.classList.add("task_list");
+          taskList.innerHTML = `
+            <h3>Task List</h3>
+            <ul type="circle" id="unoredList"></ul>
+          `;
+          note_content.appendChild(taskList);
+        }
+
+        let unoredList = taskList.querySelector("#unoredList");
         let li = document.createElement("li");
         li.innerText = tl.value;
         li.classList.add("list");
         unoredList.appendChild(li);
-        insert_in.remove();
+
+        insert.remove();
       });
     });
-    let remove = document.getElementById("remove");
+
+    // Delete note button
+    let remove = d2.querySelector("#remove");
     remove.addEventListener("click", () => {
-      let noteId = clickedDiv.dataset.noteId;
-      let noteIndex = arr.findIndex((item) => item.id == noteId);
-      arr.splice(noteIndex, 1);
-      renderNotes();
+      let noteIndex = arr.findIndex((item) => item.id === noteId);
+      if (noteIndex > -1) {
+        arr.splice(noteIndex, 1);
+        renderNotes();
+        all.innerHTML = ""; // Clear the detailed view
+      }
     });
   }
 });
