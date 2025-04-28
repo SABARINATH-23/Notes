@@ -13,7 +13,7 @@ let t2 = document.createElement("div");
 let id = 0;
 let list_li = true;
 let arr = [];
-let a = create.addEventListener("click", () => {
+create.addEventListener("click", () => {
   obj = {
     id: id,
     title_value: title.value,
@@ -58,9 +58,15 @@ function renderNotes() {
     // d.textContent = `${obj.title_value}`;
     // d1.textContent = `${obj.content_value}`;
     list.append(di);
+
     d2.remove();
     div.list.remove();
   });
+
+  if (arr.length == 0);
+  {
+    open("./Home.html", "_self");
+  }
 }
 
 list.addEventListener("click", (e) => {
